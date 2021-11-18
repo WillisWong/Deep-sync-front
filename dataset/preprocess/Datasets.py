@@ -345,7 +345,7 @@ class DatasetStats(DatasetAction, ABC):
                 room_types = room.roomTypes
                 for room_type in room_types:
                     self.room_types_count[room_type] = self.room_types_count.get(room_type, 0) + 1
-            from filters.floor_node import floor_node_filter
+            from dataset.preprocess.filters.floor_node import floor_node_filter
             filters = [floor_node_filter] if self.floor_node_only else []
             nodes = list(set([node for nodes in [room.get_nodes(filters)
                                                  for room in house.rooms] for node in nodes

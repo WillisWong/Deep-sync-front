@@ -1,7 +1,7 @@
-
+import sys
+from DataFilter import filter_process
 from dataset.preprocess.Datasets import create_dataset
 from dataset.preprocess.Object import parse_objects
-from DataFilter import filter_process
 
 
 def init_dataset():
@@ -38,8 +38,8 @@ def create_living_room_dataset():
 
 
 if __name__ == '__main__':
-    parse_objects()
-    init_dataset()
+    # parse_objects()
+    # init_dataset()
 
     create_bedroom_dataset()
 

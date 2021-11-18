@@ -4,7 +4,13 @@ Load/Save binary dataset
 """
 
 import os
-import pickle5 as pickle
+try:
+    # python >= 3.9
+    import pickle
+except ImportError:
+    # python < 3.9
+    import pickle5 as pickle
+
 from alive_progress import alive_bar
 
 from dataset.preprocess.Object import ObjectCategories
@@ -39,7 +45,7 @@ def read_raw_data(data_folder):
         data_loaded['model_freq'] = [int(l[:-1].split()[1]) for l in lines]
     
     data_loaded['models'] = [
-        model for model in models if data_loaded['category_map'].get_final_category(model) not in set(['window', 'door',''])
+        model for model in models if data_loaded['category_map'].get_final_category(model) not in {'window', 'door', ''}
         ]
     data_loaded['model_to_index'] = {
         data_loaded['models'][i]: i for i in range(len(data_loaded['models']))

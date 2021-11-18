@@ -38,15 +38,15 @@ def filter_process(filter_description, source, destination, stats, save_freq, re
 def get_filter(source, filter, *args):
     dataset_f = None
     if filter == "good_house":
-        from dataset.preprocess.filters import good_house_criteria
+        from dataset.preprocess.filters.good_house import good_house_criteria
         house_f = good_house_criteria
         dataset_f = DatasetFilter(house_filters=[house_f])
     elif filter == "room_type":
-        from dataset.preprocess.filters import room_type_criteria
+        from dataset.preprocess.filters.room_type import room_type_criteria
         room_f = room_type_criteria(*args)
         dataset_f = DatasetFilter(room_filters=[room_f])
     elif filter == "bedroom":
-        from dataset.preprocess.filters import bedroom_filter
+        from dataset.preprocess.filters.bedroom import bedroom_filter
         dataset_f = bedroom_filter(*args, source)
     elif filter == "office":
         from dataset.preprocess.filters.office import office_filter
@@ -55,13 +55,13 @@ def get_filter(source, filter, *args):
         from dataset.preprocess.filters.livingroom import livingroom_filter
         dataset_f = livingroom_filter(*args, source)
     elif filter == "floor_node":
-        from dataset.preprocess.filters import floor_node_filter
+        from dataset.preprocess.filters.floor_node import floor_node_filter
         dataset_f = floor_node_filter(*args)
     elif filter == "renderable":
         from dataset.preprocess.filters.renderable import renderable_room_filter
         dataset_f = renderable_room_filter(*args)
     elif filter == "collision":
-        from dataset.preprocess.filters import collision_filter
+        from dataset.preprocess.filters.collision import collision_filter
         from dataset.preprocess.priors.observations import ObjectCollection
         oc = ObjectCollection()
         dataset_f = collision_filter(oc)

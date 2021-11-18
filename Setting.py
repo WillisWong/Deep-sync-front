@@ -1,5 +1,5 @@
 # TODO: Set true data path
-dataRoot = '/home/vangy/project/DataSets/3D-FRONT-samples/3d_front'
+dataRoot = 'C:/Project/Datasets/3D-FRONT'
 
 house_data_path = f"{dataRoot}/house"
 house_stats_path = f"{dataRoot}/house_relations"

@@ -1,10 +1,17 @@
-import pickle5 as pickle
+try:
+    # python >= 3.9
+    import pickle
+except ImportError:
+    # python < 3.9
+    import pickle5 as pickle
 import os
+import platform
 import numpy as np
 import csv
 
 from alive_progress import alive_bar
 from Setting import object_data_path, processedData, dataRoot
+
 
 def parse_objects():
     """
@@ -14,6 +21,7 @@ def parse_objects():
     obj_dir = object_data_path
     dest = f"{processedData}/object/"
     print("Parsing 3d_front object files...")
+    # print(os.listdir(obj_dir))
     obj_nums = len(os.listdir(obj_dir))
     with alive_bar(obj_nums) as bar:
         for (index, model_id) in enumerate(os.listdir(obj_dir)):
@@ -223,7 +231,9 @@ class ObjectCategories:
     def __init__(self):
         filename = "ModelCategoryMapping.csv"
         self.model_to_categories = {}
-
+        # if platform.system() == 'Windows':
+        #     model_cat_file = f"{dataRoot}\\{filename}"
+        # elif platform.system() == 'Linux':
         model_cat_file = f"{dataRoot}/{filename}"
 
         with open(model_cat_file, "r", encoding='utf-8', errors='ignore') as f:
