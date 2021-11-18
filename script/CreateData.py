@@ -38,8 +38,8 @@ def create_living_room_dataset():
 
 
 if __name__ == '__main__':
-    # parse_objects()
-    # init_dataset()
+    parse_objects()
+    init_dataset()
 
     create_bedroom_dataset()
 
